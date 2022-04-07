@@ -1,7 +1,7 @@
 package task.weatherforecast.city.controller;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.service.CityService;
@@ -9,9 +9,9 @@ import task.weatherforecast.city.service.CityService;
 @RestController
 @RequestMapping("/cities")
 @Slf4j
+@AllArgsConstructor
 public class CityController {
-    @Autowired
-    private CityService cityService;
+    private final CityService cityService;
 
     @PostMapping("/")
     public City saveCity(@RequestBody City city){
