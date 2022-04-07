@@ -1,17 +1,17 @@
 package task.weatherforecast.city.service;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.repository.CityRepository;
 
 @Service
 @Slf4j
+@AllArgsConstructor
 public class CityService {
 
-    @Autowired
-    private CityRepository cityRepository;
+    private final CityRepository cityRepository;
 
     public City saveCity(City city) {
         log.info("CityService.saveCity");
