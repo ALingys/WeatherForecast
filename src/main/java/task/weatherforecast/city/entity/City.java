@@ -1,8 +1,6 @@
 package task.weatherforecast.city.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +15,9 @@ import java.math.BigDecimal;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long cityId;
-    String name;
-    BigDecimal area;
-    Long population;
+    private Long id;
+    private Long cityId;
+    private String name;
+    private BigDecimal area;
+    private Long population;
 }

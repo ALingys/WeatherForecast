@@ -13,7 +13,6 @@ import task.weatherforecast.user.repository.UserRepository;
 import java.util.List;
 
 @Service
-@Slf4j
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "user with username %s not found.";
@@ -22,8 +21,6 @@ public class UserService implements UserDetailsService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public User saveUser(User user){
-        log.info("UserService.saveUser");
-
         boolean userExists = userRepository
                 .findByUsername(user.getUsername())
                 .isPresent();

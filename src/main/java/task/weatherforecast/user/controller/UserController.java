@@ -9,7 +9,7 @@ import task.weatherforecast.user.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @Slf4j
 @AllArgsConstructor
 public class UserController {
