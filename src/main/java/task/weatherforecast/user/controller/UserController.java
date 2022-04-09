@@ -1,7 +1,6 @@
 package task.weatherforecast.user.controller;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import task.weatherforecast.user.entity.User;
 import task.weatherforecast.user.service.UserService;
@@ -10,15 +9,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@Slf4j
 @AllArgsConstructor
 public class UserController {
     private final UserService userService;
 
     @PostMapping("/")
     public User saveUser(@RequestBody User user){
-        log.info("UserController.saveUser");
         return userService.saveUser(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable("id") Long id){
+        userService.deleteById(id);
     }
 
     @GetMapping("/{id}")
