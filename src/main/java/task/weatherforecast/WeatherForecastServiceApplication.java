@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.service.CityService;
 import task.weatherforecast.citydetail.entity.CityDetail;
@@ -24,6 +25,11 @@ public class WeatherForecastServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WeatherForecastServiceApplication.class, args);
+	}
+
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
 	}
 
 	@Bean

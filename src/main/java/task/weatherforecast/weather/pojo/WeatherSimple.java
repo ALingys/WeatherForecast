@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Weather {
-    private BigDecimal temperature;
+public class WeatherSimple {
+    private Double tempMin;
+    private Double tempMax;
+    private String weatherCondition;
 }
