@@ -43,6 +43,11 @@ public class UserController {
         return userService.findUserByLastName(lastName);
     }
 
+    @RequestMapping(value = "/", params = "cityName", method = RequestMethod.GET)
+    public Iterable<User> findByFavoriteCitiesName(@RequestParam(name = "cityName") String name){
+        return userService.findByFavoriteCitiesName(name);
+    }
+
     @GetMapping("/")
     public List<User> getAllUsers(){
         return userService.findAll();

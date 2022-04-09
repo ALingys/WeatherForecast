@@ -13,4 +13,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByFirstName(String firstName);
 
     User findByLastName(String lastName);
+
+    Iterable<User> findByFavoriteCitiesName(String name);
 }
