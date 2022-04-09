@@ -47,14 +47,14 @@ public class UserService implements UserDetailsService {
         }
 
         String passwordEncoded = bCryptPasswordEncoder.encode(userNew.getPassword());
-
+        user.setPassword(passwordEncoded);
         user.setUsername(userNew.getUsername());
         user.setFirstName(userNew.getFirstName());
         user.setLastName(userNew.getLastName());
         user.setHomeLocation(userNew.getHomeLocation());
         user.setLocked(userNew.getLocked());
         user.setEnabled(userNew.getEnabled());
-        user.setPassword(passwordEncoded);
+        user.setFavoriteCities(userNew.getFavoriteCities());
 
         return userRepository.save(user);
     }

@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import task.weatherforecast.city.entity.City;
+
+import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -28,6 +28,9 @@ public class User implements UserDetails {
 
     private Boolean locked;
     private Boolean enabled;
+
+    @ManyToMany(targetEntity = City.class)
+    private List<City> favoriteCities;
 
     public User(String username,
                 String password,
