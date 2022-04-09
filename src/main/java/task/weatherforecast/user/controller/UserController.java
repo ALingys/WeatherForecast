@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import task.weatherforecast.user.entity.User;
 import task.weatherforecast.user.service.UserService;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/users")
 @AllArgsConstructor
@@ -49,7 +47,7 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public List<User> getAllUsers(){
+    public Iterable<User> getAllUsers(){
         return userService.findAll();
     }
 }

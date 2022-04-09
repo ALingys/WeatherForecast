@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import task.weatherforecast.user.entity.User;
 import task.weatherforecast.user.repository.UserRepository;
 
-import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -81,7 +80,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public List<User> findAll(){
+    public Iterable<User> findAll(){
         return userRepository.findAll();
     }
 
