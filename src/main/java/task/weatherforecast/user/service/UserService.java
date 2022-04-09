@@ -56,7 +56,7 @@ public class UserService implements UserDetailsService {
         user.setEnabled(userNew.getEnabled());
         user.setPassword(passwordEncoded);
 
-        return userRepository.save(userNew);
+        return userRepository.save(user);
     }
 
     public void deleteById(Long id){
