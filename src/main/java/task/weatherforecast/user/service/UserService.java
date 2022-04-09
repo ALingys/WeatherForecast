@@ -45,7 +45,7 @@ public class UserService implements UserDetailsService {
         if(!user.getUsername().equals(userNew.getUsername())){
             checkIfUserExists(userNew.getUsername());
         }
-        
+
         String passwordEncoded = bCryptPasswordEncoder.encode(userNew.getPassword());
 
         user.setUsername(userNew.getUsername());
