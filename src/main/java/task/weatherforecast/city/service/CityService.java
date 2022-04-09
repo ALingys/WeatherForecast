@@ -43,7 +43,7 @@ public class CityService {
 
         Long cityId = city.getCityId();
         if(!city.getName().equals(cityNew.getName())){
-            cityId = findCityIdByName(city.getName());
+            cityId = findCityIdByName(cityNew.getName());
             checkIfCityIdExists(cityId);
         }
 
