@@ -1,16 +1,12 @@
 package task.weatherforecast.city.service;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.repository.CityRepository;
-import task.weatherforecast.citydetail.entity.CityDetail;
-import task.weatherforecast.citydetail.repository.CityDetailRepository;
 import task.weatherforecast.citydetail.service.CityDetailService;
 
 @Service
-@Slf4j
 @AllArgsConstructor
 public class CityService {
 

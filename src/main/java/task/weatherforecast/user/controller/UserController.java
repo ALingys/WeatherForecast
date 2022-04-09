@@ -18,6 +18,11 @@ public class UserController {
         return userService.saveUser(user);
     }
 
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable("id") Long id, @RequestBody User user){
+        return userService.updateUser(id, user);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable("id") Long id){
         userService.deleteById(id);

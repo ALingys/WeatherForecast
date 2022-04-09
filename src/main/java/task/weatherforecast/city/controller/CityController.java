@@ -1,6 +1,7 @@
 package task.weatherforecast.city.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.service.CityService;
@@ -17,8 +18,8 @@ public class CityController {
     }
 
     @PutMapping("/{id}")
-    public City updateCity(@PathVariable("id") Long id, @RequestBody City cityUpdate){
-        return cityService.updateCity(id, cityUpdate);
+    public City updateCity(@PathVariable("id") Long id, @RequestBody City cityNew){
+        return cityService.updateCity(id, cityNew);
     }
 
     @DeleteMapping("/{id}")
