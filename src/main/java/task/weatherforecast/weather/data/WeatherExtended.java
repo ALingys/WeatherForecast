@@ -1,4 +1,4 @@
-package task.weatherforecast.weather.pojo;
+package task.weatherforecast.weather.data;
 
 import lombok.Data;
 import task.weatherforecast.city.entity.City;

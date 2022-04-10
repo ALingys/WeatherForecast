@@ -7,9 +7,9 @@ import task.weatherforecast.city.service.CityService;
 import task.weatherforecast.weather.client.WeatherClient;
 import task.weatherforecast.weather.client.model.forecast.ForecastRoot;
 import task.weatherforecast.weather.client.model.weather.WeatherRoot;
-import task.weatherforecast.weather.pojo.Forecast;
-import task.weatherforecast.weather.pojo.WeatherExtended;
-import task.weatherforecast.weather.pojo.WeatherSimple;
+import task.weatherforecast.weather.data.Forecast;
+import task.weatherforecast.weather.data.WeatherExtended;
+import task.weatherforecast.weather.data.WeatherSimple;
 
 import java.util.ArrayList;
 import java.util.List;

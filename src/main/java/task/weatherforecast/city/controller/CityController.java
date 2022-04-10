@@ -37,5 +37,4 @@ public class CityController {
     public List<City> findAll(){
         return cityService.findAll();
     }
-
 }

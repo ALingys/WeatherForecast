@@ -1,4 +1,4 @@
-package task.weatherforecast.weather.pojo;
+package task.weatherforecast.weather.data;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
