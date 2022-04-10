@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.service.CityService;
 import task.weatherforecast.weather.client.WeatherClient;
+import task.weatherforecast.weather.client.model.forecast.ForecastRoot;
 import task.weatherforecast.weather.client.model.weather.WeatherRoot;
 import task.weatherforecast.weather.pojo.WeatherExtended;
 import task.weatherforecast.weather.pojo.WeatherSimple;
@@ -30,10 +31,14 @@ public class WeatherService {
         return weatherList;
     }
 
-    public WeatherExtended getWeatherExtended(Long cityId) {
+    public WeatherExtended getWeatherExtended(Long cityId, Boolean includeForecast) {
         City city = cityService.findByCityId(cityId);
         WeatherRoot weatherRoot = weatherClient.getWeatherByCityId(cityId);
-        WeatherExtended weatherExtended = new WeatherExtended(city, weatherRoot);
+        ForecastRoot forecastRoot = null;
+        if(includeForecast){
+            forecastRoot = weatherClient.getForecastByCityId(cityId);
+        }
+        WeatherExtended weatherExtended = new WeatherExtended(city, weatherRoot, forecastRoot);
 
         return weatherExtended;
     }

@@ -2,6 +2,7 @@ package task.weatherforecast.weather.pojo;
 
 import lombok.Data;
 import task.weatherforecast.city.entity.City;
+import task.weatherforecast.weather.client.model.forecast.ForecastRoot;
 import task.weatherforecast.weather.client.model.weather.WeatherRoot;
 
 @Data
@@ -9,8 +10,8 @@ public class WeatherExtended extends WeatherSimple{
     private Integer pressure;
     private Integer humidity;
 
-    public WeatherExtended(City city, WeatherRoot weatherRoot){
-        super(city, weatherRoot);
+    public WeatherExtended(City city, WeatherRoot weatherRoot, ForecastRoot forecastRoot){
+        super(city, weatherRoot, forecastRoot);
         setPressure(weatherRoot.getMain().getPressure());
         setHumidity(weatherRoot.getMain().getHumidity());
     }
