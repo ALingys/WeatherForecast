@@ -24,7 +24,8 @@ public class WeatherService {
 
         List<City> cityList = cityService.findAll();
         for(City city : cityList){
-            WeatherSimple weatherSimple = new WeatherSimple(city, weatherClient.getWeatherByCityId(city.getCityId()));
+            WeatherRoot weatherRoot = weatherClient.getWeatherByCityId(city.getCityId());
+            WeatherSimple weatherSimple = new WeatherSimple(city, weatherRoot);
             weatherList.add(weatherSimple);
         }
 
@@ -42,4 +43,19 @@ public class WeatherService {
 
         return weatherExtended;
     }
+
+    public WeatherSimple getWeatherSimpleByCoord(Double lon, Double lat, Boolean includeForecast){
+        City city = cityService.findByCoordLonAndCoordLat(lon, lat);
+        WeatherRoot weatherRoot = weatherClient.getWeatherByCityId(city.getCityId());
+        ForecastRoot forecastRoot = null;
+        if(includeForecast){
+            forecastRoot = weatherClient.getForecastByCityId(city.getCityId());
+        }
+
+        WeatherSimple weatherSimple = new WeatherSimple(city, weatherRoot, forecastRoot);
+
+        return weatherSimple;
+    }
+
+
 }

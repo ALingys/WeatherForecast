@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Embeddable
 public class Coord {
-    private BigDecimal lon;
-    private BigDecimal lat;
+
+    private Double lon;
+    private Double lat;
 }

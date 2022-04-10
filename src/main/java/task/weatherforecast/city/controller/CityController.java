@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.service.CityService;
+import task.weatherforecast.user.entity.User;
 
 import java.util.List;
 

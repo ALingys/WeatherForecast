@@ -2,6 +2,7 @@ package task.weatherforecast.weather.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import task.weatherforecast.city.entity.City;
 import task.weatherforecast.weather.client.WeatherClient;
 import task.weatherforecast.weather.client.model.forecast.ForecastRoot;
 import task.weatherforecast.weather.pojo.WeatherExtended;
@@ -15,24 +16,24 @@ import java.util.List;
 @RequestMapping("/api/weather")
 public class WeatherController {
     private WeatherService weatherService;
-    private WeatherClient weatherClient;
 
     @GetMapping("/")
     public List<WeatherSimple> getCitiesWeatherSimpleList(){
         return weatherService.getCitiesWeatherSimpleList();
     }
 
-    @GetMapping("/extended/{id}/")
+    @GetMapping("/extended/{id}")
     public WeatherExtended getWeatherExtended(@PathVariable("id") Long cityId,
                                               @RequestParam(name = "includeForecast", defaultValue = "false")
                                               Boolean includeForecast){
         return weatherService.getWeatherExtended(cityId, includeForecast);
     }
 
-    @GetMapping("/forecast/{id}")
-    public ForecastRoot getForecast(@PathVariable("id") Long cityId){
-        return weatherClient.getForecastByCityId(cityId);
+    @RequestMapping(value = "/coord/", method = RequestMethod.GET)
+    public WeatherSimple findByCoordLonAndCoordLat(@RequestParam(name = "lat") Double lat,
+                                                   @RequestParam(name = "lon") Double lon,
+                                                   @RequestParam(name = "includeForecast", defaultValue = "false")
+                                                   Boolean includeForecast){
+        return weatherService.getWeatherSimpleByCoord(lat, lon, includeForecast);
     }
-
-
 }

@@ -1,5 +1,6 @@
 package task.weatherforecast.city.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,4 +23,8 @@ public class City {
     private String name;
     private BigDecimal area;
     private Long population;
+    @JsonProperty("coord_lon")
+    private Double coordLon;
+    @JsonProperty("coord_lat")
+    private Double coordLat;
 }
