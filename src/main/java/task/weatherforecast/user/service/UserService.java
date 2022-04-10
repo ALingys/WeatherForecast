@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import task.weatherforecast.user.entity.User;
 import task.weatherforecast.user.repository.UserRepository;
 
+import java.util.List;
+
 
 @Service
 @AllArgsConstructor
@@ -68,23 +70,23 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, username)));
     }
 
-    public User findUserByFirstName(String firstName) {
-        return userRepository.findByFirstName(firstName);
+    public List<User> findAllByFirstName(String firstName) {
+        return userRepository.findAllByFirstName(firstName);
     }
 
-    public User findUserByLastName(String lastName) {
-        return userRepository.findByLastName(lastName);
+    public List<User> findAllByLastName(String lastName) {
+        return userRepository.findAllByLastName(lastName);
     }
 
     public User findUserById(Long id){
         return userRepository.findById(id).orElse(null);
     }
 
-    public Iterable<User> findAll(){
+    public List<User> findAll(){
         return userRepository.findAll();
     }
 
-    public Iterable<User> findByFavoriteCitiesName(String name){
+    public List<User> findByFavoriteCitiesName(String name){
         return userRepository.findByFavoriteCitiesName(name);
     }
 }
