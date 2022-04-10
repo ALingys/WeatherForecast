@@ -1,5 +1,5 @@
 
-package task.weatherforecast.weather.client.model.weather;
+package task.weatherforecast.weather.client.model.forecast;
 
 import java.util.HashMap;
 import java.util.Map;

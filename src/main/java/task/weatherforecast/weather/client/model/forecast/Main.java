@@ -1,5 +1,5 @@
 
-package task.weatherforecast.weather.client.model.weather;
+package task.weatherforecast.weather.client.model.forecast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,9 +14,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "feels_like",
+    "grnd_level",
     "humidity",
     "pressure",
+    "sea_level",
     "temp",
+    "temp_kf",
     "temp_max",
     "temp_min"
 })
@@ -25,12 +28,18 @@ public class Main {
 
     @JsonProperty("feels_like")
     private Double feelsLike;
+    @JsonProperty("grnd_level")
+    private Integer grndLevel;
     @JsonProperty("humidity")
     private Integer humidity;
     @JsonProperty("pressure")
     private Integer pressure;
+    @JsonProperty("sea_level")
+    private Integer seaLevel;
     @JsonProperty("temp")
     private Double temp;
+    @JsonProperty("temp_kf")
+    private Integer tempKf;
     @JsonProperty("temp_max")
     private Double tempMax;
     @JsonProperty("temp_min")
@@ -46,6 +55,16 @@ public class Main {
     @JsonProperty("feels_like")
     public void setFeelsLike(Double feelsLike) {
         this.feelsLike = feelsLike;
+    }
+
+    @JsonProperty("grnd_level")
+    public Integer getGrndLevel() {
+        return grndLevel;
+    }
+
+    @JsonProperty("grnd_level")
+    public void setGrndLevel(Integer grndLevel) {
+        this.grndLevel = grndLevel;
     }
 
     @JsonProperty("humidity")
@@ -68,6 +87,16 @@ public class Main {
         this.pressure = pressure;
     }
 
+    @JsonProperty("sea_level")
+    public Integer getSeaLevel() {
+        return seaLevel;
+    }
+
+    @JsonProperty("sea_level")
+    public void setSeaLevel(Integer seaLevel) {
+        this.seaLevel = seaLevel;
+    }
+
     @JsonProperty("temp")
     public Double getTemp() {
         return temp;
@@ -76,6 +105,16 @@ public class Main {
     @JsonProperty("temp")
     public void setTemp(Double temp) {
         this.temp = temp;
+    }
+
+    @JsonProperty("temp_kf")
+    public Integer getTempKf() {
+        return tempKf;
+    }
+
+    @JsonProperty("temp_kf")
+    public void setTempKf(Integer tempKf) {
+        this.tempKf = tempKf;
     }
 
     @JsonProperty("temp_max")

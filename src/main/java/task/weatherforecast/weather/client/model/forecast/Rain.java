@@ -1,5 +1,5 @@
 
-package task.weatherforecast.weather.client.model.weather;
+package task.weatherforecast.weather.client.model.forecast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,37 +13,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "deg",
-    "speed"
+    "3h"
 })
 @Generated("jsonschema2pojo")
-public class Wind {
+public class Rain {
 
-    @JsonProperty("deg")
-    private Integer deg;
-    @JsonProperty("speed")
-    private Double speed;
+    @JsonProperty("3h")
+    private Double _3h;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("deg")
-    public Integer getDeg() {
-        return deg;
+    @JsonProperty("3h")
+    public Double get3h() {
+        return _3h;
     }
 
-    @JsonProperty("deg")
-    public void setDeg(Integer deg) {
-        this.deg = deg;
-    }
-
-    @JsonProperty("speed")
-    public Double getSpeed() {
-        return speed;
-    }
-
-    @JsonProperty("speed")
-    public void setSpeed(Double speed) {
-        this.speed = speed;
+    @JsonProperty("3h")
+    public void set3h(Double _3h) {
+        this._3h = _3h;
     }
 
     @JsonAnyGetter

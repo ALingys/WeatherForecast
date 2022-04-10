@@ -1,8 +1,7 @@
 
-package task.weatherforecast.weather.client.model.weather;
+package task.weatherforecast.weather.client.model.forecast;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -14,61 +13,42 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "base",
     "clouds",
-    "cod",
-    "coord",
     "dt",
-    "id",
+    "dt_txt",
     "main",
-    "name",
+    "pop",
+    "rain",
     "sys",
-    "timezone",
     "visibility",
     "weather",
     "wind"
 })
 @Generated("jsonschema2pojo")
-public class WeatherRoot {
+public class List {
 
-    @JsonProperty("base")
-    private String base;
     @JsonProperty("clouds")
     private Clouds clouds;
-    @JsonProperty("cod")
-    private Integer cod;
-    @JsonProperty("coord")
-    private Coord coord;
     @JsonProperty("dt")
     private Integer dt;
-    @JsonProperty("id")
-    private Integer id;
+    @JsonProperty("dt_txt")
+    private String dtTxt;
     @JsonProperty("main")
     private Main main;
-    @JsonProperty("name")
-    private String name;
+    @JsonProperty("pop")
+    private Integer pop;
+    @JsonProperty("rain")
+    private Rain rain;
     @JsonProperty("sys")
     private Sys sys;
-    @JsonProperty("timezone")
-    private Integer timezone;
     @JsonProperty("visibility")
     private Integer visibility;
     @JsonProperty("weather")
-    private List<Weather> weather = null;
+    private java.util.List<Weather> weather = null;
     @JsonProperty("wind")
     private Wind wind;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("base")
-    public String getBase() {
-        return base;
-    }
-
-    @JsonProperty("base")
-    public void setBase(String base) {
-        this.base = base;
-    }
 
     @JsonProperty("clouds")
     public Clouds getClouds() {
@@ -78,26 +58,6 @@ public class WeatherRoot {
     @JsonProperty("clouds")
     public void setClouds(Clouds clouds) {
         this.clouds = clouds;
-    }
-
-    @JsonProperty("cod")
-    public Integer getCod() {
-        return cod;
-    }
-
-    @JsonProperty("cod")
-    public void setCod(Integer cod) {
-        this.cod = cod;
-    }
-
-    @JsonProperty("coord")
-    public Coord getCoord() {
-        return coord;
-    }
-
-    @JsonProperty("coord")
-    public void setCoord(Coord coord) {
-        this.coord = coord;
     }
 
     @JsonProperty("dt")
@@ -110,14 +70,14 @@ public class WeatherRoot {
         this.dt = dt;
     }
 
-    @JsonProperty("id")
-    public Integer getId() {
-        return id;
+    @JsonProperty("dt_txt")
+    public String getDtTxt() {
+        return dtTxt;
     }
 
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
+    @JsonProperty("dt_txt")
+    public void setDtTxt(String dtTxt) {
+        this.dtTxt = dtTxt;
     }
 
     @JsonProperty("main")
@@ -130,14 +90,24 @@ public class WeatherRoot {
         this.main = main;
     }
 
-    @JsonProperty("name")
-    public String getName() {
-        return name;
+    @JsonProperty("pop")
+    public Integer getPop() {
+        return pop;
     }
 
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
+    @JsonProperty("pop")
+    public void setPop(Integer pop) {
+        this.pop = pop;
+    }
+
+    @JsonProperty("rain")
+    public Rain getRain() {
+        return rain;
+    }
+
+    @JsonProperty("rain")
+    public void setRain(Rain rain) {
+        this.rain = rain;
     }
 
     @JsonProperty("sys")
@@ -148,16 +118,6 @@ public class WeatherRoot {
     @JsonProperty("sys")
     public void setSys(Sys sys) {
         this.sys = sys;
-    }
-
-    @JsonProperty("timezone")
-    public Integer getTimezone() {
-        return timezone;
-    }
-
-    @JsonProperty("timezone")
-    public void setTimezone(Integer timezone) {
-        this.timezone = timezone;
     }
 
     @JsonProperty("visibility")
@@ -171,12 +131,12 @@ public class WeatherRoot {
     }
 
     @JsonProperty("weather")
-    public List<Weather> getWeather() {
+    public java.util.List<Weather> getWeather() {
         return weather;
     }
 
     @JsonProperty("weather")
-    public void setWeather(List<Weather> weather) {
+    public void setWeather(java.util.List<Weather> weather) {
         this.weather = weather;
     }
 
