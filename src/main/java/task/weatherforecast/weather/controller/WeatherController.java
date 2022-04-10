@@ -2,9 +2,6 @@ package task.weatherforecast.weather.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import task.weatherforecast.city.entity.City;
-import task.weatherforecast.weather.client.WeatherClient;
-import task.weatherforecast.weather.client.model.forecast.ForecastRoot;
 import task.weatherforecast.weather.pojo.WeatherExtended;
 import task.weatherforecast.weather.pojo.WeatherSimple;
 import task.weatherforecast.weather.service.WeatherService;

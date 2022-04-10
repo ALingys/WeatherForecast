@@ -7,6 +7,8 @@ import task.weatherforecast.city.entity.City;
 import task.weatherforecast.weather.client.model.forecast.ForecastRoot;
 import task.weatherforecast.weather.client.model.weather.WeatherRoot;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class WeatherSimple {
@@ -15,7 +17,7 @@ public class WeatherSimple {
     private Double tempMax;
     private String weatherCondition;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private ForecastRoot forecast;
+    private List<Forecast> forecastList;
 
     public WeatherSimple(City city, WeatherRoot weatherRoot){
         setCity(city);
@@ -24,9 +26,8 @@ public class WeatherSimple {
         setWeatherCondition(weatherRoot.getWeather().get(0).getDescription());
     }
 
-    public WeatherSimple(City city, WeatherRoot weatherRoot, ForecastRoot forecastRoot){
+    public WeatherSimple(City city, WeatherRoot weatherRoot, List<Forecast> forecastList){
         this(city, weatherRoot);
-
-        setForecast(forecastRoot);
+        setForecastList(forecastList);
     }
 }
