@@ -4,17 +4,19 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import task.weatherforecast.weather.client.WeatherClient;
-import task.weatherforecast.weather.client.model.WeatherRoot;
+import task.weatherforecast.weather.pojo.WeatherSimple;
+import task.weatherforecast.weather.service.WeatherService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/weather")
 @AllArgsConstructor
+@RequestMapping("/api/weather")
 public class WeatherController {
-    private WeatherClient weatherClient;
+    private WeatherService weatherService;
 
     @GetMapping("/")
-    public WeatherRoot getWeather(){
-        return weatherClient.getWeatherByCityId(1L);
+    public List<WeatherSimple> getWeather(){
+        return weatherService.getWeather();
     }
 }

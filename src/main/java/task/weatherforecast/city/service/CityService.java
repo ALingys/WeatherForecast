@@ -6,6 +6,8 @@ import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.repository.CityRepository;
 import task.weatherforecast.citydetail.service.CityDetailService;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class CityService {
@@ -53,6 +55,10 @@ public class CityService {
 
     public City findById(Long cityId) {
         return cityRepository.findById(cityId).orElse(null);
+    }
+
+    public List<City> findAll(){
+        return cityRepository.findAll();
     }
 
     public void deleteById(Long id) {

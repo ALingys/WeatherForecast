@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.service.CityService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/cities")
 @AllArgsConstructor
@@ -27,8 +29,13 @@ public class CityController {
     }
 
     @GetMapping("/{id}")
-    public City findById(@PathVariable("id") Long cityId){
-        return cityService.findById(cityId);
+    public City findById(@PathVariable("id") Long id){
+        return cityService.findById(id);
+    }
+
+    @GetMapping("/")
+    public List<City> findAll(){
+        return cityService.findAll();
     }
 
 }
