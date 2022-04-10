@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.repository.CityRepository;
+import task.weatherforecast.citydetail.entity.CityDetail;
 import task.weatherforecast.citydetail.service.CityDetailService;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -13,8 +16,17 @@ public class CityService {
     private final CityRepository cityRepository;
     private final CityDetailService cityDetailService;
 
-    private Long findCityIdByName(String cityName){
-        return cityDetailService.findByName(cityName).getId();
+    private CityDetail findCityDetailsByCityName(String cityName){
+        return cityDetailService.findByName(cityName);
+    }
+
+    private void fillCityWithDetails(City city, CityDetail cityDetail){
+        if(cityDetail == null){
+            throw new IllegalStateException("city details not found.");
+        }
+        city.setCityId(cityDetail.getId());
+        city.setCoordLat(cityDetail.getCoord().getLat());
+        city.setCoordLon(cityDetail.getCoord().getLon());
     }
 
     private void checkIfCityIdExists(Long cityId){
@@ -27,9 +39,9 @@ public class CityService {
     }
 
     public City saveCity(City city) {
-        Long cityId = findCityIdByName(city.getName());
-        checkIfCityIdExists(cityId);
-        city.setCityId(cityId);
+        CityDetail cityDetail = findCityDetailsByCityName(city.getName());
+        checkIfCityIdExists(cityDetail.getId());
+        fillCityWithDetails(city, cityDetail);
 
         return cityRepository.save(city);
     }
@@ -37,22 +49,33 @@ public class CityService {
     public City updateCity(Long id, City cityNew){
         City city = findById(id);
 
-        Long cityId = city.getCityId();
         if(!city.getName().equals(cityNew.getName())){
-            cityId = findCityIdByName(cityNew.getName());
-            checkIfCityIdExists(cityId);
+            CityDetail cityDetail = findCityDetailsByCityName(city.getName());
+            checkIfCityIdExists(cityDetail.getId());
+            fillCityWithDetails(city, cityDetail);
         }
 
         city.setName(cityNew.getName());
         city.setPopulation(cityNew.getPopulation());
         city.setArea(cityNew.getArea());
-        city.setCityId(cityId);
 
         return cityRepository.save(city);
     }
 
-    public City findById(Long cityId) {
-        return cityRepository.findById(cityId).orElse(null);
+    public City findById(Long id) {
+        return cityRepository.findById(id).orElse(null);
+    }
+
+    public City findByCityId(Long cityId) {
+        return cityRepository.findByCityId(cityId).orElse(null);
+    }
+
+    public City findByCoordLonAndCoordLat(Double coordLon, Double coordLat){
+        return cityRepository.findByCoordLonAndCoordLat(coordLon,coordLat);
+    }
+
+    public List<City> findAll(){
+        return cityRepository.findAll();
     }
 
     public void deleteById(Long id) {

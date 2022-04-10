@@ -1,0 +1,146 @@
+
+package task.weatherforecast.weather.client.model.forecast;
+
+import com.fasterxml.jackson.annotation.*;
+
+import javax.annotation.Generated;
+import java.util.HashMap;
+import java.util.Map;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "feels_like",
+    "grnd_level",
+    "humidity",
+    "pressure",
+    "sea_level",
+    "temp",
+    "temp_kf",
+    "temp_max",
+    "temp_min"
+})
+@Generated("jsonschema2pojo")
+public class Main {
+
+    @JsonProperty("feels_like")
+    private Double feelsLike;
+    @JsonProperty("grnd_level")
+    private Integer grndLevel;
+    @JsonProperty("humidity")
+    private Integer humidity;
+    @JsonProperty("pressure")
+    private Integer pressure;
+    @JsonProperty("sea_level")
+    private Integer seaLevel;
+    @JsonProperty("temp")
+    private Double temp;
+    @JsonProperty("temp_kf")
+    private Integer tempKf;
+    @JsonProperty("temp_max")
+    private Double tempMax;
+    @JsonProperty("temp_min")
+    private Double tempMin;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    @JsonProperty("feels_like")
+    public Double getFeelsLike() {
+        return feelsLike;
+    }
+
+    @JsonProperty("feels_like")
+    public void setFeelsLike(Double feelsLike) {
+        this.feelsLike = feelsLike;
+    }
+
+    @JsonProperty("grnd_level")
+    public Integer getGrndLevel() {
+        return grndLevel;
+    }
+
+    @JsonProperty("grnd_level")
+    public void setGrndLevel(Integer grndLevel) {
+        this.grndLevel = grndLevel;
+    }
+
+    @JsonProperty("humidity")
+    public Integer getHumidity() {
+        return humidity;
+    }
+
+    @JsonProperty("humidity")
+    public void setHumidity(Integer humidity) {
+        this.humidity = humidity;
+    }
+
+    @JsonProperty("pressure")
+    public Integer getPressure() {
+        return pressure;
+    }
+
+    @JsonProperty("pressure")
+    public void setPressure(Integer pressure) {
+        this.pressure = pressure;
+    }
+
+    @JsonProperty("sea_level")
+    public Integer getSeaLevel() {
+        return seaLevel;
+    }
+
+    @JsonProperty("sea_level")
+    public void setSeaLevel(Integer seaLevel) {
+        this.seaLevel = seaLevel;
+    }
+
+    @JsonProperty("temp")
+    public Double getTemp() {
+        return temp;
+    }
+
+    @JsonProperty("temp")
+    public void setTemp(Double temp) {
+        this.temp = temp;
+    }
+
+    @JsonProperty("temp_kf")
+    public Integer getTempKf() {
+        return tempKf;
+    }
+
+    @JsonProperty("temp_kf")
+    public void setTempKf(Integer tempKf) {
+        this.tempKf = tempKf;
+    }
+
+    @JsonProperty("temp_max")
+    public Double getTempMax() {
+        return tempMax;
+    }
+
+    @JsonProperty("temp_max")
+    public void setTempMax(Double tempMax) {
+        this.tempMax = tempMax;
+    }
+
+    @JsonProperty("temp_min")
+    public Double getTempMin() {
+        return tempMin;
+    }
+
+    @JsonProperty("temp_min")
+    public void setTempMin(Double tempMin) {
+        this.tempMin = tempMin;
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+}

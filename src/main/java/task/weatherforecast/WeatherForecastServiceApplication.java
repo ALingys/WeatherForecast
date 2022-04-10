@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.service.CityService;
 import task.weatherforecast.citydetail.entity.CityDetail;
@@ -24,6 +25,11 @@ public class WeatherForecastServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WeatherForecastServiceApplication.class, args);
+	}
+
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
 	}
 
 	@Bean
@@ -64,8 +70,8 @@ public class WeatherForecastServiceApplication {
 				User user = new User();
 				user.setUsername("testUser1");
 				user.setPassword("testUser1");
-				user.setFirstName("FirstName1");
-				user.setLastName("LastName1");
+				user.setFirstName("FirstName");
+				user.setLastName("LastName");
 				user.setLocked(false);
 				user.setEnabled(true);
 
@@ -73,13 +79,13 @@ public class WeatherForecastServiceApplication {
 				userService.saveUser(user);
 				log.info("User testUser1 created.");
 			}
-			
+
 			{
 				User user = new User();
 				user.setUsername("testUser2");
 				user.setPassword("testUser2");
-				user.setFirstName("FirstName2");
-				user.setLastName("LastName2");
+				user.setFirstName("FirstName");
+				user.setLastName("LastName");
 				user.setLocked(false);
 				user.setEnabled(true);
 

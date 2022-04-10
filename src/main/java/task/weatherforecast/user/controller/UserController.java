@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import task.weatherforecast.user.entity.User;
 import task.weatherforecast.user.service.UserService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/users")
 @AllArgsConstructor
@@ -32,13 +34,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/", params = "firstName", method = RequestMethod.GET)
-    public User findUserByFirstName(@RequestParam(name = "firstName") String firstName){
-        return userService.findUserByFirstName(firstName);
+    public List<User> findUsersByFirstName(@RequestParam(name = "firstName") String firstName){
+        return userService.findAllByFirstName(firstName);
     }
 
     @RequestMapping(value = "/", params = "lastName", method = RequestMethod.GET)
-    public User findUserByLastName(@RequestParam(name = "lastName") String lastName){
-        return userService.findUserByLastName(lastName);
+    public List<User> findUsersByLastName(@RequestParam(name = "lastName") String lastName){
+        return userService.findAllByLastName(lastName);
     }
 
     @RequestMapping(value = "/", params = "cityName", method = RequestMethod.GET)

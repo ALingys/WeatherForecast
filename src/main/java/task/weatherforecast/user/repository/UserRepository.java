@@ -4,15 +4,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import task.weatherforecast.user.entity.User;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
 
-    User findByFirstName(String firstName);
+    List<User> findByFavoriteCitiesName(String name);
 
-    User findByLastName(String lastName);
+    List<User> findAllByFirstName(String firstName);
 
-    Iterable<User> findByFavoriteCitiesName(String name);
+    List<User> findAllByLastName(String lastName);
 }
