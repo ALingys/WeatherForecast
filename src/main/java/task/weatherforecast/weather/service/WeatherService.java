@@ -6,6 +6,7 @@ import task.weatherforecast.city.entity.City;
 import task.weatherforecast.city.service.CityService;
 import task.weatherforecast.weather.client.WeatherClient;
 import task.weatherforecast.weather.client.model.weather.WeatherRoot;
+import task.weatherforecast.weather.pojo.WeatherExtended;
 import task.weatherforecast.weather.pojo.WeatherSimple;
 
 import java.util.ArrayList;
@@ -17,22 +18,23 @@ public class WeatherService {
     private WeatherClient weatherClient;
     private CityService cityService;
 
-    public List<WeatherSimple> getWeather(){
+    public List<WeatherSimple> getCitiesWeatherSimpleList(){
         List<WeatherSimple> weatherList = new ArrayList<>();
 
         List<City> cityList = cityService.findAll();
         for(City city : cityList){
-            WeatherRoot apiResult = weatherClient.getWeatherByCityId(city.getCityId());
-
-            WeatherSimple weatherSimple = new WeatherSimple();
-            weatherSimple.setCity(city);
-            weatherSimple.setTempMin(apiResult.getMain().getTempMin());
-            weatherSimple.setTempMax(apiResult.getMain().getTempMax());
-            weatherSimple.setWeatherCondition(apiResult.getWeather().get(0).getDescription());
-
+            WeatherSimple weatherSimple = new WeatherSimple(city, weatherClient.getWeatherByCityId(city.getCityId()));
             weatherList.add(weatherSimple);
         }
 
         return weatherList;
+    }
+
+    public WeatherExtended getWeatherExtended(Long cityId) {
+        City city = cityService.findByCityId(cityId);
+        WeatherRoot weatherRoot = weatherClient.getWeatherByCityId(cityId);
+        WeatherExtended weatherExtended = new WeatherExtended(city, weatherRoot);
+
+        return weatherExtended;
     }
 }

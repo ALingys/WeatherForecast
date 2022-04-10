@@ -53,8 +53,12 @@ public class CityService {
         return cityRepository.save(city);
     }
 
-    public City findById(Long cityId) {
-        return cityRepository.findById(cityId).orElse(null);
+    public City findById(Long id) {
+        return cityRepository.findById(id).orElse(null);
+    }
+
+    public City findByCityId(Long cityId) {
+        return cityRepository.findByCityId(cityId).orElse(null);
     }
 
     public List<City> findAll(){
