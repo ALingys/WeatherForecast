@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -21,7 +20,7 @@ public class City {
     private Long id;
     private Long cityId;
     private String name;
-    private BigDecimal area;
+    private Double area;
     private Long population;
     @JsonProperty("coord_lon")
     private Double coordLon;

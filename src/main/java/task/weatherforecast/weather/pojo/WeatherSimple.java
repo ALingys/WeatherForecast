@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import task.weatherforecast.city.entity.City;
-import task.weatherforecast.weather.client.model.forecast.ForecastRoot;
 import task.weatherforecast.weather.client.model.weather.WeatherRoot;
 
 import java.util.List;

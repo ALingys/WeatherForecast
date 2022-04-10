@@ -15,8 +15,11 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping("/")
-    public List<WeatherSimple> getCitiesWeatherSimpleList(){
-        return weatherService.getCitiesWeatherSimpleList();
+    public List<WeatherSimple> getCitiesWeatherSimpleList(
+            @RequestParam(name = "cityPopulation", required = false) Long population,
+            @RequestParam(name = "cityAreaFrom", required = false) Double areaFrom,
+            @RequestParam(name = "cityAreaTo", required = false) Double areaTo){
+        return weatherService.getCitiesWeatherSimpleList(population, areaFrom, areaTo) ;
     }
 
     @GetMapping("/extended/{id}")

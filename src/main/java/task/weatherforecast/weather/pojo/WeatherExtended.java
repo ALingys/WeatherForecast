@@ -2,7 +2,6 @@ package task.weatherforecast.weather.pojo;
 
 import lombok.Data;
 import task.weatherforecast.city.entity.City;
-import task.weatherforecast.weather.client.model.forecast.ForecastRoot;
 import task.weatherforecast.weather.client.model.weather.WeatherRoot;
 
 import java.util.List;

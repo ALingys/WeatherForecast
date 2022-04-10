@@ -81,4 +81,12 @@ public class CityService {
     public void deleteById(Long id) {
         cityRepository.deleteById(id);
     }
+
+    public List<City> findAllByAreaBetween(Double areaFrom, Double areaTo) {
+        return cityRepository.findAllByAreaBetween(areaFrom, areaTo);
+    }
+    public List<City> findAllByPopulation(Long population){
+        return cityRepository.findAllByPopulation(population);
+    }
+
 }

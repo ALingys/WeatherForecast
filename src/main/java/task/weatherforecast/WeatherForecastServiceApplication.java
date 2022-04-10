@@ -16,7 +16,6 @@ import task.weatherforecast.user.entity.User;
 import task.weatherforecast.user.service.UserService;
 
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 @Slf4j
@@ -47,21 +46,21 @@ public class WeatherForecastServiceApplication {
 			City cityVilnius = new City();
 			cityVilnius.setName("Vilnius");
 			cityVilnius.setPopulation(544386L);
-			cityVilnius.setArea(new BigDecimal(401));
+			cityVilnius.setArea(401d);
 			cityService.saveCity(cityVilnius);
 			log.info("City Vilnius created.");
 
 			City cityKaunas = new City();
 			cityKaunas.setName("Kaunas");
 			cityKaunas.setPopulation(295269L);
-			cityKaunas.setArea(new BigDecimal(157));
+			cityKaunas.setArea(157d);
 			cityService.saveCity(cityKaunas);
 			log.info("City Kaunas created.");
 
 			City cityAlytus = new City();
 			cityAlytus.setName("Alytus");
 			cityAlytus.setPopulation(49551L);
-			cityAlytus.setArea(new BigDecimal(48));
+			cityAlytus.setArea(48d);
 			cityService.saveCity(cityAlytus);
 			log.info("City Alytus created.");
 

@@ -40,10 +40,18 @@ public class WeatherService {
         return result;
     }
 
-    public List<WeatherSimple> getCitiesWeatherSimpleList(){
+    public List<WeatherSimple> getCitiesWeatherSimpleList(Long population, Double areaFrom, Double areaTo){
         List<WeatherSimple> weatherList = new ArrayList<>();
 
-        List<City> cityList = cityService.findAll();
+        List<City> cityList = null;
+        if(population!=null){
+            cityList = cityService.findAllByPopulation(population);
+        } else if(areaFrom!=null && areaTo!=null){
+            cityList = cityService.findAllByAreaBetween(areaFrom, areaTo);
+        } else {
+            cityList = cityService.findAll();
+        }
+
         for(City city : cityList){
             WeatherRoot weatherRoot = weatherClient.getWeatherByCityId(city.getCityId());
             WeatherSimple weatherSimple = new WeatherSimple(city, weatherRoot);
