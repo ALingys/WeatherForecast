@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/weather")
+@RequestMapping("/api/v1/weather")
 public class WeatherController {
     private WeatherService weatherService;
 
