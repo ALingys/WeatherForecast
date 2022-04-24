@@ -17,8 +17,8 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class WeatherService {
-    private WeatherClient weatherClient;
-    private CityService cityService;
+    private final WeatherClient weatherClient;
+    private final CityService cityService;
 
     private List<Forecast> buildForecastList(ForecastRoot forecastRoot){
         List<Forecast> result = new ArrayList<>();
@@ -43,7 +43,7 @@ public class WeatherService {
     public List<WeatherSimple> getCitiesWeatherSimpleList(Long population, Double areaFrom, Double areaTo){
         List<WeatherSimple> weatherList = new ArrayList<>();
 
-        List<City> cityList = null;
+        List<City> cityList;
         if(population!=null){
             cityList = cityService.findAllByPopulation(population);
         } else if(areaFrom!=null && areaTo!=null){
@@ -70,9 +70,8 @@ public class WeatherService {
             ForecastRoot forecastRoot = weatherClient.getForecastByCityId(city.getCityId());
             forecastList = buildForecastList(forecastRoot);
         }
-        WeatherExtended weatherExtended = new WeatherExtended(city, weatherRoot, forecastList);
 
-        return weatherExtended;
+        return new WeatherExtended(city, weatherRoot, forecastList);
     }
 
     public WeatherSimple getWeatherSimpleByCoord(Double lon, Double lat, Boolean includeForecast){
@@ -85,9 +84,7 @@ public class WeatherService {
             forecastList = buildForecastList(forecastRoot);
         }
 
-        WeatherSimple weatherSimple = new WeatherSimple(city, weatherRoot, forecastList);
-
-        return weatherSimple;
+        return new WeatherSimple(city, weatherRoot, forecastList);
     }
 
 
