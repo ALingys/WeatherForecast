@@ -8,7 +8,7 @@ import task.weatherforecast.city.service.CityService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/cities")
+@RequestMapping("/api/v1/cities")
 @AllArgsConstructor
 public class CityController {
     private final CityService cityService;
