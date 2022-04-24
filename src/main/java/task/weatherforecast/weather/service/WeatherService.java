@@ -13,6 +13,7 @@ import task.weatherforecast.weather.data.WeatherSimple;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -20,29 +21,22 @@ public class WeatherService {
     private final WeatherClient weatherClient;
     private final CityService cityService;
 
-    private List<Forecast> buildForecastList(ForecastRoot forecastRoot){
-        List<Forecast> result = new ArrayList<>();
-
+    private List<Forecast> getForecastList(ForecastRoot forecastRoot){
         java.util.List<task.weatherforecast.weather.client.model.forecast.List> list = forecastRoot.getList();
-        for(task.weatherforecast.weather.client.model.forecast.List item : list){
-            Forecast forecast = new Forecast();
-            forecast.setDt(item.getDt());
-            forecast.setDtTxt(item.getDtTxt());
-            forecast.setTemp(item.getMain().getTemp());
-            forecast.setTempMin(item.getMain().getTempMin());
-            forecast.setTempMax(item.getMain().getTempMax());
-            forecast.setHumidity(item.getMain().getHumidity());
-            forecast.setPressure(item.getMain().getPressure());
-            forecast.setWeatherCondition(item.getWeather().get(0).getDescription());
-
-            result.add(forecast);
-        }
-        return result;
+        return list.stream()
+                .map(item -> Forecast.builder()
+                        .dt(item.getDt())
+                        .dtTxt(item.getDtTxt())
+                        .temp(item.getMain().getTemp())
+                        .tempMin(item.getMain().getTempMin())
+                        .tempMax(item.getMain().getTempMax())
+                        .humidity(item.getMain().getHumidity())
+                        .pressure(item.getMain().getHumidity())
+                        .weatherCondition(item.getWeather().get(0).getDescription())
+                        .build()).collect(Collectors.toList());
     }
 
     public List<WeatherSimple> getCitiesWeatherSimpleList(Long population, Double areaFrom, Double areaTo){
-        List<WeatherSimple> weatherList = new ArrayList<>();
-
         List<City> cityList;
         if(population!=null){
             cityList = cityService.findAllByPopulation(population);
@@ -52,13 +46,9 @@ public class WeatherService {
             cityList = cityService.findAll();
         }
 
-        for(City city : cityList){
-            WeatherRoot weatherRoot = weatherClient.getWeatherByCityId(city.getCityId());
-            WeatherSimple weatherSimple = new WeatherSimple(city, weatherRoot);
-            weatherList.add(weatherSimple);
-        }
-
-        return weatherList;
+        return cityList.stream()
+                .map(city -> new WeatherSimple(city, weatherClient.getWeatherByCityId(city.getCityId())))
+                .collect(Collectors.toList());
     }
 
     public WeatherExtended getWeatherExtended(Long cityId, Boolean includeForecast) {
@@ -68,7 +58,7 @@ public class WeatherService {
         List<Forecast> forecastList = null;
         if(includeForecast){
             ForecastRoot forecastRoot = weatherClient.getForecastByCityId(city.getCityId());
-            forecastList = buildForecastList(forecastRoot);
+            forecastList = getForecastList(forecastRoot);
         }
 
         return new WeatherExtended(city, weatherRoot, forecastList);
@@ -81,11 +71,9 @@ public class WeatherService {
         List<Forecast> forecastList = null;
         if(includeForecast){
             ForecastRoot forecastRoot = weatherClient.getForecastByCityId(city.getCityId());
-            forecastList = buildForecastList(forecastRoot);
+            forecastList = getForecastList(forecastRoot);
         }
 
         return new WeatherSimple(city, weatherRoot, forecastList);
     }
-
-
 }
